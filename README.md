@@ -1,31 +1,42 @@
 # Crypto (Coinbase Commerce-style)
 
-Official **PeltyCMS** `gateway` WASM addon (`gateway-crypto`).
+Accept Crypto (Coinbase Commerce-style) payments in PeltyCMS checkout
 
-## Install
+Official **payment gateway** for [PeltyCMS](https://github.com/MythicalLTD/PeltyCMS) — identifier `gateway-crypto`.
 
-1. Open Pelty Admin → Addons → Marketplace
-2. Set registry URL to `https://market.mythicalsystems.org/api/pelty/addons/registry.json`
-3. Download **Crypto (Coinbase Commerce-style)**
+## Why this addon
 
-Marketplace: https://market.mythicalsystems.org/marketplace/product/gateway-crypto  
-Product ID (CI): `48`
+Hosts who want customers to pay invoices without leaving Pelty checkout.
 
-## Develop
+## Features
 
-This repository is a git submodule of [MythicalLTD/PeltyCMS](https://github.com/MythicalLTD/PeltyCMS) at `extensions/addons/crypto`.
+- Take invoice and checkout payments through **Crypto (Coinbase Commerce-style)**
+- Signed webhook handling so paid invoices mark paid automatically
+- Fits Pelty tax, credits, refunds and multi-currency
+- Runs as sandboxed WASM — no custom PHP on your panel
+- Keys live in Pelty secrets, not in theme code
 
-```bash
-# from the PeltyCMS monorepo
-cargo xtask addons crypto
-```
+## How it works
 
-## Release (Mythic Marketplace)
+1. Install **Crypto (Coinbase Commerce-style)** from the [Mythical marketplace](https://market.mythicalsystems.org/marketplace/product/gateway-crypto) (or Pelty Admin → Addons → Marketplace).
+2. Open Pelty Admin and enter your Crypto (Coinbase Commerce-style) credentials in the addon settings.
+3. Attach it to the products / forms / login flows you care about.
+4. New orders and sign-ins use Crypto (Coinbase Commerce-style) automatically.
 
-Same flow as [featherpanel-com/PterodactylPanelApi](https://github.com/featherpanel-com/PterodactylPanelApi):
+## Requirements
 
-1. Repo secrets: `MYTHIC_PRODUCT_ID`, `MYTHIC_RELEASE_TOKEN`
-2. Repo variable: `ADDON_DIR=crypto`
-3. Actions → **Release Addon** → Run workflow
+- A running PeltyCMS panel with WASM addons enabled
+- Valid Crypto (Coinbase Commerce-style) API / OAuth / panel credentials (depending on the integration)
+- Outbound HTTPS from the panel to Crypto (Coinbase Commerce-style)
 
-Publishes the packed `gateway-crypto.zip` via `MythicalLTD/.github/actions/publish-release@v1` and creates a GitHub Release.
+## Get it
+
+[Crypto (Coinbase Commerce-style) on Mythical Marketplace](https://market.mythicalsystems.org/marketplace/product/gateway-crypto)
+
+Free official build. Source for this package lives in this repository.
+
+## Support
+
+- Marketplace product page: https://market.mythicalsystems.org/marketplace/product/gateway-crypto
+- PeltyCMS core: https://github.com/MythicalLTD/PeltyCMS
+- Issues for this addon: use this repo’s Issues tab
